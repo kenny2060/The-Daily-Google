@@ -4,11 +4,11 @@ const path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
 const AylienNewsApi = require('aylien-news-api')
-    // Setup empty JS object to act as endpoint for all routes
+// Setup empty JS object to act as endpoint for all routes
 const projectData = []
 
 const app = express()
-    // Cors for cross origin allowance
+// Cors for cross origin allowance
 const cors = require('cors')
 app.use(cors())
 
@@ -67,26 +67,29 @@ app.get('/localNews', (req, res) => {
             console.error('GET Stories failed: ', error)
         } else {
             console.log("API called successfully.")
-                // console.log("========================================")
-                // for (let i = 0; i < data.stories.length; i++) {
-                //     console.log(data.stories[i].media[i].url)
-                // }
+            console.log("========================================")
+            for (let i = 0; i < data.stories.length; i++) {
+                console.log(data.stories[i].source.name)
+            }
             stories = data.stories
-            res.send(stories)
+            projectData.push(stories)
         }
     })
 })
 
-// app.post('/stories', (req, res) => {
-//     console.log('POST /stories: ', req.body)
-//     let newsStories = {
-//         'title': req.body.title
-//     }
-//     projectData.push(newsStories)
-//     res.send(projectData)
-//     console.log('Stories Data: ', projectData)
-// })
+app.post('/returnNews', (req, res) => {
+    console.log('POST /stories: ', req.body)
+    let newsStories = {
+        'title': req.body.title,
+        'source': req.body.source,
+        'image': req.body.imgURL,
+        'userInput': req.body.userInput
+    }
+    projectData.push(newsStories)
+    // res.send(projectData)
+    // console.log('Stories Data: ', projectData)
+})
 
-// app.get('/updateUI', (req, res) => {
-//     res.send(projectData)
-// })
+app.get('/updateUI', (req, res) => {
+    res.send(projectData)
+})
