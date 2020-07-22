@@ -3,7 +3,7 @@ import nullStorySourceImg from '../img/wrecked-iphone.jpg'
 async function handleSubmit(event) {
     event.preventDefault()
     console.log("::: Form Submitted :::")
-    let local_section = document.getElementsByClassName('section-news')[0]
+    let local_section = document.getElementsByClassName('section-news')
     // check what text was put into the form field
     let formText = document.getElementById('name').value
     //Client.checkForName(formText)
@@ -11,7 +11,7 @@ async function handleSubmit(event) {
     getStoriesRes()
         .then(data => {
             console.log('Request succeeded with JSON response: ', data)
-            postUserNew('/returnNews', { userInput: formText, title: data.title, source: data.source, imgURL: data.media })
+            postUserNew('/returnNews', { userInput: formText })
                 .catch(error => {
                     console.log('API Request Failed', error)
                 })

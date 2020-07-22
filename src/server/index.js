@@ -73,20 +73,18 @@ app.get('/localNews', (req, res) => {
             }
             stories = data.stories
             projectData.push(stories)
+            res.send(stories)
         }
     })
 })
 
 app.post('/returnNews', (req, res) => {
-    console.log('POST /stories: ', req.body)
+    // console.log('POST /stories: ', req.body)
     let newsStories = {
-        'title': req.body.title,
-        'source': req.body.source,
-        'image': req.body.imgURL,
-        'userInput': req.body.userInput
+        'title': req.body.title
     }
     projectData.push(newsStories)
-    // res.send(projectData)
+    res.send(projectData)
     // console.log('Stories Data: ', projectData)
 })
 
