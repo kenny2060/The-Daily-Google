@@ -15,7 +15,7 @@ async function handleSubmit(event) {
                 .catch(error => {
                     console.log('API Request Failed', error)
                 })
-                .then(updateUI())
+                .then(updateUI(data))
         })
 
     async function getStoriesRes() {
@@ -51,8 +51,8 @@ async function handleSubmit(event) {
     }
 
     // Update the UI with Users Results
-    async function updateUI() {
-        const storyData = await fetch('/updateUI')
+    async function updateUI(data) {
+        const storyData = data
         try {
             for (var i = 0; i < storyData.length; i++) {
                 const storyDiv = document.createElement('div')

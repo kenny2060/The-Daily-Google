@@ -47,21 +47,23 @@ app_key.apiKey = process.env['NEWSAPI_APP_KEY']
 
 const apiInstance = new AylienNewsApi.DefaultApi()
 
-const opts = {
-    title: '"Boris Johnson"',
-    sortBy: "social_shares_count.facebook",
-    language: ["en"],
-    publishedAtStart: "NOW-7DAYS",
-    publishedAtEnd: "NOW",
-    // categoriesTaxonomy: 'iab-qag',
-    // categoriesId: ['IAB15'],
-    // entitiesBodyLinksDbpedia: [
-    //     "http://dbpedia.org/resource/British_Airways"
-    //   ]
-}
+
 
 app.get('/localNews', (req, res) => {
     let stories = null;
+    const userInput = req.body.userInput
+    const opts = {
+        title: userInput,
+        sortBy: "social_shares_count.facebook",
+        language: ["en"],
+        publishedAtStart: "NOW-7DAYS",
+        publishedAtEnd: "NOW",
+        // categoriesTaxonomy: 'iab-qag',
+        // categoriesId: ['IAB15'],
+        // entitiesBodyLinksDbpedia: [
+        //     "http://dbpedia.org/resource/British_Airways"
+        //   ]
+    }
     apiInstance.listStories(opts, (error, data, response) => {
         if (error) {
             console.error('GET Stories failed: ', error)
@@ -73,6 +75,7 @@ app.get('/localNews', (req, res) => {
             }
             stories = data.stories
             projectData.push(stories)
+            console.log('Project Data: ', projectData)
             res.send(stories)
         }
     })
