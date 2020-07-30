@@ -8,25 +8,27 @@ async function handleSubmit(event) {
     let formText = document.getElementById('name').value
     //Client.checkForName(formText)
 
-    getStoriesRes()
-        .then(data => {
-            console.log('Request succeeded with JSON response: ', data)
-            postUserNew('/returnNews', { userInput: formText })
-                .catch(error => {
-                    console.log('API Request Failed', error)
-                })
-                .then(updateUI(data))
-        })
+    // getStoriesRes()
+    //     .then(data => {
+    //         console.log('Request succeeded with JSON response: ', data)
+    //         postUserNew('/returnNews', { userInput: formText })
+    //             .catch(error => {
+    //                 console.log('API Request Failed', error)
+    //             })
+    //             .then(updateUI(data))
+    //     })
 
-    async function getStoriesRes() {
-        const apiResponse = await fetch('/localNews')
-        try {
-            const data = await apiResponse.json();
-            return data
-        } catch (error) {
-            console.error('FETCH Stories Failed: ', error)
-        }
-    }
+    postUserNew('/userNews', { userInput: formText })
+
+    // async function getStoriesRes() {
+    //     const apiResponse = await fetch('/localNews')
+    //     try {
+    //         const data = await apiResponse.json();
+    //         return data
+    //     } catch (error) {
+    //         console.error('FETCH Stories Failed: ', error)
+    //     }
+    // }
 
     // Post Data
     async function postUserNew(url = '', data = {}) {
@@ -48,16 +50,18 @@ async function handleSubmit(event) {
             })
             .catch((error) => console.error('postData FETCH failed', error)
             )
+            .then(data => updateUI(data))
     }
 
     // Update the UI with Users Results
     async function updateUI(data) {
-        const storyData = data
+        const userResults = document.querySelector('#user-results')
         try {
-            for (var i = 0; i < storyData.length; i++) {
+            userResults.innerHTML = ""
+            for (var i = 0; i < data.length; i++) {
                 const storyDiv = document.createElement('div')
                 storyDiv.classList.add('local-results')
-                storyDiv.id = storyData[i].id
+                storyDiv.id = data[i].id
 
                 const storyImageWrapper = document.createElement('div')
                 storyImageWrapper.id = 'local-story_img'
@@ -67,11 +71,11 @@ async function handleSubmit(event) {
 
                 const storyTitle = document.createElement('h2')
                 storyTitle.id = 'local-story_title'
-                const storyTitle_text = document.createTextNode(storyData[i].title)
+                const storyTitle_text = document.createTextNode(data[i].title)
 
                 const storySource = document.createElement('p')
                 storySource.id = 'local-story_source'
-                const storySource_text = document.createTextNode(storyData[i].source.name)
+                const storySource_text = document.createTextNode(data[i].source.name)
 
                 storyTitle.appendChild(storyTitle_text)
                 storySource.appendChild(storySource_text)
@@ -80,8 +84,8 @@ async function handleSubmit(event) {
                 storyTextWrapper.appendChild(storySource)
 
                 const storyImage = new Image(355, 200)
-                if (storyData[i].source.logo_url != null) {
-                    storyImage.src = storyData[i].media[0].url
+                if (data[i].media[0] != null) {
+                    storyImage.src = data[i].media[0].url
                     storyImageWrapper.appendChild(storyImage)
                 } else {
                     storyImage.src = nullStorySourceImg
@@ -90,7 +94,7 @@ async function handleSubmit(event) {
 
                 storyDiv.appendChild(storyImageWrapper)
                 storyDiv.appendChild(storyTextWrapper)
-                local_section.insertAdjacentElement('beforeend', storyDiv)
+                userResults.insertAdjacentElement('beforeend', storyDiv)
 
             }
         } catch (error) {

@@ -49,11 +49,11 @@ const apiInstance = new AylienNewsApi.DefaultApi()
 
 
 
-app.get('/localNews', (req, res) => {
+app.post('/userNews', (req, res) => {
     let stories = null;
-    const userInput = req.body.userInput
+    let userInput = req.body.userInput
     const opts = {
-        title: userInput,
+        title: '"' + userInput + '"',
         sortBy: "social_shares_count.facebook",
         language: ["en"],
         publishedAtStart: "NOW-7DAYS",
@@ -75,7 +75,6 @@ app.get('/localNews', (req, res) => {
             }
             stories = data.stories
             projectData.push(stories)
-            console.log('Project Data: ', projectData)
             res.send(stories)
         }
     })
