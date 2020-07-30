@@ -4,6 +4,7 @@ const path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
 const AylienNewsApi = require('aylien-news-api')
+const AYLIENTextAPI = require('aylien_textapi')
 // Setup empty JS object to act as endpoint for all routes
 const projectData = []
 
@@ -47,7 +48,10 @@ app_key.apiKey = process.env['NEWSAPI_APP_KEY']
 
 const apiInstance = new AylienNewsApi.DefaultApi()
 
-
+const textApi = new AYLIENTextAPI({
+    application_id: process.env['NEWSAPI_APP_ID'],
+    application_key: process.env['NEWSAPI_APP_KEY']
+})
 
 app.post('/userNews', (req, res) => {
     let stories = null;
@@ -71,25 +75,11 @@ app.post('/userNews', (req, res) => {
             console.log("API called successfully.")
             console.log("========================================")
             for (let i = 0; i < data.stories.length; i++) {
-                console.log(data.stories[i].source.name)
+                console.log(data.stories[i].body)
             }
             stories = data.stories
             projectData.push(stories)
             res.send(stories)
         }
     })
-})
-
-app.post('/returnNews', (req, res) => {
-    // console.log('POST /stories: ', req.body)
-    let newsStories = {
-        'title': req.body.title
-    }
-    projectData.push(newsStories)
-    res.send(projectData)
-    // console.log('Stories Data: ', projectData)
-})
-
-app.get('/updateUI', (req, res) => {
-    res.send(projectData)
 })

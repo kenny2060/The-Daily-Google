@@ -8,28 +8,7 @@ async function handleSubmit(event) {
     let formText = document.getElementById('name').value
     //Client.checkForName(formText)
 
-    // getStoriesRes()
-    //     .then(data => {
-    //         console.log('Request succeeded with JSON response: ', data)
-    //         postUserNew('/returnNews', { userInput: formText })
-    //             .catch(error => {
-    //                 console.log('API Request Failed', error)
-    //             })
-    //             .then(updateUI(data))
-    //     })
-
     postUserNew('/userNews', { userInput: formText })
-
-    // async function getStoriesRes() {
-    //     const apiResponse = await fetch('/localNews')
-    //     try {
-    //         const data = await apiResponse.json();
-    //         return data
-    //     } catch (error) {
-    //         console.error('FETCH Stories Failed: ', error)
-    //     }
-    // }
-
     // Post Data
     async function postUserNew(url = '', data = {}) {
         const res = await fetch(url, {
@@ -55,6 +34,7 @@ async function handleSubmit(event) {
 
     // Update the UI with Users Results
     async function updateUI(data) {
+        console.log(data)
         const userResults = document.querySelector('#user-results')
         try {
             userResults.innerHTML = ""
