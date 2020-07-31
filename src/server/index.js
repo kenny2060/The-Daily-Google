@@ -61,12 +61,7 @@ app.post('/userNews', (req, res) => {
         sortBy: "social_shares_count.facebook",
         language: ["en"],
         publishedAtStart: "NOW-7DAYS",
-        publishedAtEnd: "NOW",
-        // categoriesTaxonomy: 'iab-qag',
-        // categoriesId: ['IAB15'],
-        // entitiesBodyLinksDbpedia: [
-        //     "http://dbpedia.org/resource/British_Airways"
-        //   ]
+        publishedAtEnd: "NOW",        
     }
     apiInstance.listStories(opts, (error, data, response) => {
         if (error) {
@@ -75,7 +70,7 @@ app.post('/userNews', (req, res) => {
             console.log("API called successfully.")
             console.log("========================================")
             for (let i = 0; i < data.stories.length; i++) {
-                console.log(data.stories[i].body)
+                console.log(data.stories[i].sentiment.body.polarity)
             }
             stories = data.stories
             projectData.push(stories)

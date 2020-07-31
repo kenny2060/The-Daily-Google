@@ -34,7 +34,7 @@ async function handleSubmit(event) {
 
     // Update the UI with Users Results
     async function updateUI(data) {
-        console.log(data)
+        console.log('Called API data (updateUI): ', data)
         const userResults = document.querySelector('#user-results')
         try {
             userResults.innerHTML = ""
@@ -53,14 +53,20 @@ async function handleSubmit(event) {
                 storyTitle.id = 'local-story_title'
                 const storyTitle_text = document.createTextNode(data[i].title)
 
+                const storyPolarity = document.createElement('h4')
+                storyPolarity.id = 'local-story_polarity'
+                const storyPolarity_text = document.createTextNode(data[i].sentiment.body.polarity)
+
                 const storySource = document.createElement('p')
                 storySource.id = 'local-story_source'
                 const storySource_text = document.createTextNode(data[i].source.name)
 
-                storyTitle.appendChild(storyTitle_text)
-                storySource.appendChild(storySource_text)
+                storyTitle.append(storyTitle_text)
+                storyPolarity.append(storyPolarity_text)
+                storySource.append(storySource_text)
 
                 storyTextWrapper.appendChild(storyTitle)
+                storyTextWrapper.appendChild(storyPolarity)
                 storyTextWrapper.appendChild(storySource)
 
                 const storyImage = new Image(355, 200)
