@@ -4,23 +4,28 @@
 <head>
     <meta charset="utf-8">
     <title>The Daily Google</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div id="grip_wrapper">
         <header class="main-head">
-            <div class="brand">Logo</div>
+            <div class="brand">
+                <a class="navbar-brand" href="#">
+                    <img>
+                </a>
+            </div>
             <div class="main-navbar">navigation</div>
         </header>
 
         <div class="main_local-news">
             <section class="section-news">
-                <strong>News near you:</strong>
                 <div class="local-results">
                     <div id="local-story_img"></div>
                     <div class="local-results_text">
-                        <h2 id="local-story_title">News Stroy Title</h2>
-                        <p id="local-story_source">news story source</p>
+                        <h2 id="local-story_title">I DON'T KNOW WHAT WE'RE YELLING ABOUT!</h2>
+                        <p id="local-story_source">LOUD NOISES!
+                        </p>
                     </div>
                 </div>
             </section>
@@ -28,8 +33,9 @@
 
         <main class="main_form">
             <section class="section-form">
-                <form class="" onsubmit="return Client.handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
+                <strong>Good evening, this is what's happening in your world tonight:</strong>
+                <form class="form-submit" onsubmit="return Client.handleSubmit(event)">
+                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Search here for News...">
                     <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)"
                         onsubmit="return handleSubmit(event)">
                 </form>

@@ -78,3 +78,5 @@ app.post('/userNews', (req, res) => {
         }
     })
 })
+
+module.exports = app
