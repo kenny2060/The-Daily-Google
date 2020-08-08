@@ -6,7 +6,7 @@ beforeAll(()=> {
 })
 
 describe('Post Endpoints', () => {
-    it('should create a new post', (done) => {
+    it('should receive status code 200', (done) => {
         request(app)
             .post('/userNews')
             .set('Accept', 'application/json')

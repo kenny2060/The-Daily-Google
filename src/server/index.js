@@ -23,15 +23,15 @@ app.use(bodyParser.json())
 
 app.use(express.static('dist'))
 
-console.log(JSON.stringify(mockAPIResponse))
+// console.log(JSON.stringify(mockAPIResponse))
 
 app.get('/', (req, res) => {
     res.sendFile('dist/index.html')
 })
 
-app.get('/test', (req, res) => {
-    res.json(mockAPIResponse)
-})
+// app.get('/test', (req, res) => {
+//     res.json(mockAPIResponse)
+// })
 
 // designates what port the app will listen to for incoming requests
 app.listen(8081, () => {

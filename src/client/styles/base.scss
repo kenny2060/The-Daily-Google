@@ -22,6 +22,36 @@ p {
     margin-top: 12px
 }
 
+#section-news_title {
+    color: whitesmoke;
+    font-size: 24px;
+    padding: 24px;
+    margin-bottom: 48px;
+    text-align: center;
+    background-color: darkred;
+    border-radius: 5px;
+}
+
+.main-navbar ul {
+    display: flex;
+    flex-direction: row;
+    padding: 12px;
+}
+
+.main-navbar li {
+    padding-left: 16px;
+}
+
+.main-navbar a {
+    color: midnightblue;
+    text-decoration: none;
+}
+
+.main-navbar a:hover {
+    color: gold;
+    text-decoration: underline;
+}
+
 .navbar-brand img {
     width: 206px;
     height: 82px;
@@ -32,7 +62,7 @@ p {
 }
 
 .form-submit {
-    background-color: lightblue;
+    background-color: midnightblue;
     border-width: 3px;
     border-color: gold;
     border-radius: 5px;
@@ -40,6 +70,12 @@ p {
 
 .form-submit input {
     font-family: 'Bree Serif', serif;
+}
+
+#submit-btn:hover {
+    color: whitesmoke;
+    background-color: darkred;
+    padding: 6px;
 }
 
 .grid_wrapper {
@@ -86,10 +122,10 @@ section {
     display: flex;
     flex-direction: column;
     align-items: start;
+    margin-left: 16px;
 }
 
 #local-story_img {
-    margin: 0 24px;
     width: 355px;
     height: 200px;
     background-image: url("../img/anchorman2-banner.jpg");

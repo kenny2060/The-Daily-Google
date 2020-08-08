@@ -15,11 +15,24 @@
                     <img>
                 </a>
             </div>
-            <div class="main-navbar">navigation</div>
+            <div class="main-navbar">
+                <ul>
+                    <li>
+                        <a href="#">News Room</a>
+                    </li>
+                    <li>
+                        <a href="#">Sports News</a>
+                    </li>
+                    <li>
+                        <a href="#">Weather Reports</a>
+                    </li>
+                </ul>
+            </div>
         </header>
 
         <div class="main_local-news">
             <section class="section-news">
+                <h1 id="section-news_title">Good evening, this is what's happening in your world tonight:</h1>
                 <div class="local-results">
                     <div id="local-story_img"></div>
                     <div class="local-results_text">
@@ -33,10 +46,10 @@
 
         <main class="main_form">
             <section class="section-form">
-                <strong>Good evening, this is what's happening in your world tonight:</strong>
                 <form class="form-submit" onsubmit="return Client.handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Search here for News...">
-                    <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)"
+                    <input id="name" type="text" name="input" value="" onblur="onBlur()"
+                        placeholder="Search here for News...">
+                    <input id="submit-btn" type="submit" name="" value="Submit" onclick="return Client.handleSubmit(event)"
                         onsubmit="return handleSubmit(event)">
                 </form>
             </section>
@@ -44,14 +57,24 @@
 
         <div class="main_user-results">
             <section class="section-results">
-                <strong>Form Results:</strong>
                 <div id="user-results"></div>
             </section>
         </div>
 
         <footer class="main_footer">
             <section class="section-footer">
-                <p>This is a footer</p>
+                <ul>
+                    <li>
+                        <a href="#">News Room</a>
+                    </li>
+                    <li>
+                        <a href="#">Sports News</a>
+                    </li>
+                    <li>
+                        <a href="#">Weather Reports</a>
+                    </li>
+                </ul>
+                <p>Channel 4 News Team © Forever...</p>
             </section>
         </footer>
 
