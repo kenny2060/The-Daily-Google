@@ -8,7 +8,7 @@ async function handleSubmit(event) {
     let formText = document.getElementById('name').value
     Client.checkForName(formText)
 
-    postUserNew('/userNews', { userInput: formText })
+    postUserNew('http://localhost:8081/userNews', { userInput: formText })
     // Post Data
     async function postUserNew(url = '', data = {}) {
         const res = await fetch(url, {
