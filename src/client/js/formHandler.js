@@ -6,7 +6,7 @@ async function handleSubmit(event) {
     let local_section = document.getElementsByClassName('section-news')
     // check what text was put into the form field
     let formText = document.getElementById('name').value
-    //Client.checkForName(formText)
+    Client.checkForName(formText)
 
     postUserNew('/userNews', { userInput: formText })
     // Post Data
