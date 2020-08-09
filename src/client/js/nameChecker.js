@@ -11,6 +11,12 @@ function checkForName(inputText) {
     if(names.includes(inputText)) {
         alert("Welcome, Captain!")
     }
+
+    if (inputText.length == 0) {
+        alert("It works 60% of the time...Everytime, if you put in something to search")
+        return false
+    }
+    return true
 }
 
 export { checkForName }
