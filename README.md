@@ -14,6 +14,3 @@ This is a submisson for the [Google Nanodegree Front End Web Developer](https://
 Start up the server with `index.js`, located in the `/server` folder (Command line - `npm start`). Once started, on the `Localhost:8081`, you'll then see the website Homepage.
 Type anything you would like too search in the News, from anywhere in the whole world. For example, enter something like... "Trump".
 Sit back, let the Channel 4 News Team do their thing. You're so wise. You're like a miniature Buddha, covered in hair.
-
-
-

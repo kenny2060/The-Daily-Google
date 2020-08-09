@@ -39,6 +39,7 @@ async function handleSubmit(event) {
         try {
             userResults.innerHTML = ""
             for (var i = 0; i < data.length; i++) {
+                // Create 1st element and add the story ID
                 const storyDiv = document.createElement('div')
                 storyDiv.classList.add('local-results')
                 storyDiv.id = data[i].id
@@ -49,18 +50,22 @@ async function handleSubmit(event) {
                 const storyTextWrapper = document.createElement('div')
                 storyTextWrapper.classList.add('local-results_text')
 
+                // Title
                 const storyTitle = document.createElement('h2')
                 storyTitle.id = 'local-story_title'
                 const storyTitle_text = document.createTextNode(data[i].title)
 
+                // Polarity
                 const storyPolarity = document.createElement('h4')
                 storyPolarity.id = 'local-story_polarity'
                 const storyPolarity_text = document.createTextNode(data[i].sentiment.body.polarity)
 
+                // Source
                 const storySource = document.createElement('p')
                 storySource.id = 'local-story_source'
                 const storySource_text = document.createTextNode(data[i].source.name)
 
+                // Append text
                 storyTitle.append(storyTitle_text)
                 storyPolarity.append(storyPolarity_text)
                 storySource.append(storySource_text)
@@ -69,6 +74,7 @@ async function handleSubmit(event) {
                 storyTextWrapper.appendChild(storyPolarity)
                 storyTextWrapper.appendChild(storySource)
 
+                // Media
                 const storyImage = new Image(355, 200)
                 if (data[i].media[0] != null) {
                     storyImage.src = data[i].media[0].url
@@ -78,6 +84,7 @@ async function handleSubmit(event) {
                     storyImageWrapper.appendChild(storyImage)
                 }
 
+                // Append all elements and insert
                 storyDiv.appendChild(storyImageWrapper)
                 storyDiv.appendChild(storyTextWrapper)
                 userResults.insertAdjacentElement('beforeend', storyDiv)

@@ -17,15 +17,9 @@
             </div>
             <div class="main-navbar">
                 <ul>
-                    <li>
-                        <a href="#">News Room</a>
-                    </li>
-                    <li>
-                        <a href="#">Sports News</a>
-                    </li>
-                    <li>
-                        <a href="#">Weather Reports</a>
-                    </li>
+                    <li><a href="#">News Room</a></li>
+                    <li><a href="#">Sports News</a></li>
+                    <li><a href="#">Weather Reports</a></li>
                 </ul>
             </div>
         </header>
@@ -47,10 +41,10 @@
         <main class="main_form">
             <section class="section-form">
                 <form class="form-submit" onsubmit="return Client.handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="onBlur()"
+                    <input id="name" pattern="[A-za-z0-9]+" type="text" name="input" value="" onblur="onBlur()"
                         placeholder="Search here for News...">
-                    <input id="submit-btn" type="submit" name="" value="Submit" onclick="return Client.handleSubmit(event)"
-                        onsubmit="return handleSubmit(event)">
+                    <input id="submit-btn" type="submit" name="" value="Submit"
+                        onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
                 </form>
             </section>
         </main>
@@ -64,15 +58,9 @@
         <footer class="main_footer">
             <section class="section-footer">
                 <ul>
-                    <li>
-                        <a href="#">News Room</a>
-                    </li>
-                    <li>
-                        <a href="#">Sports News</a>
-                    </li>
-                    <li>
-                        <a href="#">Weather Reports</a>
-                    </li>
+                    <li><a href="#">News Room</a></li>
+                    <li><a href="#">Sports News</a></li>
+                    <li><a href="#">Weather Reports</a></li>
                 </ul>
                 <p>Channel 4 News Team © Forever...</p>
             </section>

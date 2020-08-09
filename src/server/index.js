@@ -23,15 +23,10 @@ app.use(bodyParser.json())
 
 app.use(express.static('dist'))
 
-// console.log(JSON.stringify(mockAPIResponse))
 
 app.get('/', (req, res) => {
     res.sendFile('dist/index.html')
 })
-
-// app.get('/test', (req, res) => {
-//     res.json(mockAPIResponse)
-// })
 
 // designates what port the app will listen to for incoming requests
 app.listen(8081, () => {
@@ -61,22 +56,23 @@ app.post('/userNews', (req, res) => {
         sortBy: "social_shares_count.facebook",
         language: ["en"],
         publishedAtStart: "NOW-7DAYS",
-        publishedAtEnd: "NOW",        
+        publishedAtEnd: "NOW",
     }
     apiInstance.listStories(opts, (error, data, response) => {
         if (error) {
             console.error('GET Stories failed: ', error)
         } else {
             console.log("API called successfully.")
-            console.log("========================================")
-            for (let i = 0; i < data.stories.length; i++) {
-                console.log(data.stories[i].sentiment.body.polarity)
-            }
+            // console.log("========================================")
+            // for (let i = 0; i < data.stories.length; i++) {
+            //     console.log(data.stories[i].sentiment.body.polarity)
+            // }
             stories = data.stories
+            // @ProjectData would be used to pool multiple APIs
             projectData.push(stories)
             res.send(stories)
         }
     })
 })
-
+// Exported for Jest testing (app.listen)
 module.exports = app
