@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const WorkboxPlugin = require('workbox-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = {
@@ -50,6 +51,7 @@ module.exports = {
             cleanStaleWebpackAssests: true,
             protectedWebpackAssets: false
         }),
+        new WorkboxPlugin.GenerateSW(),
         // new BundleAnalyzerPlugin()
     ]
 }
