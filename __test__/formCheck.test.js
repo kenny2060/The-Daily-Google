@@ -1,7 +1,7 @@
 const request = require('supertest')
 const app = require('../src/server/index')
 
-beforeAll(()=> {
+beforeAll(() => {
     process.env.NODE_ENV = 'test'
 })
 
@@ -18,16 +18,3 @@ describe('Post Endpoints', () => {
             })
     })
 })
-
-
-
-
-// import { formHandler } from '../src/client/js/formHandler'
-
-// describe("Validation", () => {
-//     test("Check for vaild user input ", async () => {
-//         const data = await ('http://localhost:8081/userNews', { userInput: 'Trump' })
-//         expect(data.status).toBe(200)
-//         // expect(formHandler).toBeDefined()
-//     })
-// })
